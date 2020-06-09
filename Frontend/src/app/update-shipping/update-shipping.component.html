@@ -1,0 +1,90 @@
+<div class="bg-img">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="updateshipping-info">
+                    <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image" />
+                    <h2>Update Your Shipping Details !</h2>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="updateshipping-form">
+                    <form #UpdateShippingForm="ngForm" (ngSubmit)='UpdateShipping(UpdateShippingForm)'>
+                        <div class="form-group">
+                            <label class="control-label col-sm-9" for="fname">Product Name:</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="productName" #productName='ngModel' pattern="[a-zA-z]+([\s][a-zA-z]+)*" [(ngModel)]='this.updateShippingService.updateShippingDetails.productName' required class="form-control" maxlength="35">
+                            </div>
+                            <!-- UserName Validation Starts -->
+                            <div *ngIf='productName.touched && productName.invalid'>
+                                <p class="text text-danger" *ngIf='productName.errors.required'>
+                                    User Name is Mandatory
+                                </p>
+                                <p class="text text-danger" *ngIf='productName.errors.pattern'>
+                                    User Name Accepts Only Characters
+                                </p>
+                            </div>
+                            <!-- UserName Validation Ends -->
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="email">Email:</label>
+                            <div class="col-sm-10">
+                                <input type="email" name="email" #email='ngModel' [(ngModel)]='this.updateShippingService.updateShippingDetails.email' pattern="^[a-zA-z]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$" maxlength="35" required class="form-control" email>
+                            </div>
+                        </div>
+                        <!-- Email Validation Starts -->
+                        <div *ngIf='email.touched && email.invalid'>
+                            <p class="text text-danger" *ngIf='email.errors.required'>
+                                Email is Mandatory
+                            </p>
+                            <p class="text text-warning" *ngIf='email.errors.pattern'>
+                                Email in not Valid (abc@gmail.com)
+                            </p>
+                        </div>
+                        <!-- Email Validation Ends -->
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="phoneNumber">Phone No:</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="phoneNumber" #phoneNumber='ngModel' [(ngModel)]='this.updateShippingService.updateShippingDetails.phoneNumber' required pattern="[6-9]{1}[0-9]{9}" class="form-control" maxlength="10" minlength="10">
+                            </div>
+                            <div *ngIf='phoneNumber.touched && phoneNumber.invalid'>
+                                <p class="text text-danger" *ngIf='phoneNumber.errors.required'>
+                                    Phone Number is Mandatory
+                                </p>
+                                <p class="text text-danger" *ngIf='phoneNumber.errors.pattern'>
+                                    Phone Number should start with 6-9
+                                </p>
+                                <p class="text text-danger" *ngIf='phoneNumber.errors.minlength'>
+                                    Phone Number should be 10 digits
+                                </p>
+                            </div>
+                            <!-- Address Validation Ends -->
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="address">Address:</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="5" id="address" name="address" #address='ngModel' [(ngModel)]='this.updateShippingService.updateShippingDetails.address' required class="form-control" maxlength="35"></textarea>
+                                <!-- <input type="text" name="address" #address='ngModel' [(ngModel)]='this.auth.UpdateShippingForm.address' required class="form-control" maxlength="35"> -->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="pincode">Pin Code:</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="pincode" #pincode='ngModel' [(ngModel)]='this.updateShippingService.updateShippingDetails.pincode' required class="form-control" maxlength="6">
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-outline-success" (click)="payment()">Submit</button>
+                            </div>
+                        </div> -->
+                        <div class="btn-group">
+                            <button type="reset" class="btn btn-dark ">Reset</button>
+                            <button type="submit" class="btn btn-primary" [disabled]='UpdateShippingForm.invalid'>Update Shipping Details </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

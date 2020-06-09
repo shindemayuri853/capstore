@@ -1,0 +1,34 @@
+<div class="container mt-4">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Order Id</th>
+                <th>Product Id</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Pin Code</th>
+                <th>Phone Number</th>
+                <th>Product Quantity</th>
+                <th>Total Bill</th>
+                <th>Product Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let user of bookedRoomListDisplay'>
+                <td>{{user.bookingId}}</td>
+                <td>{{user.hotelId}}</td>
+                <td>{{user.roomId}}</td>
+                <td>{{user.userId}}</td>
+                <td>{{user.roomAmount}}</td>
+                <td>{{user.paymentStatus}}</td>
+                <td>{{user.modeOfPayment}}</td>
+                <td>{{user.checkInDate}}</td>
+                <td>
+                    <button type="submit" class="btn btn-danger" (click)='cancelBooking(user)'>
+                        Cancel
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

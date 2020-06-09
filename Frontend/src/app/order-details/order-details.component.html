@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <table class="table table-bordered table-hover">
+        <thead class="thead-primary">
+            <tr>
+                <th>Order Id</th>
+                <th>Product Id</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Pin Code</th>
+                <th>Phone Number</th>
+                <th>Product Quantity</th>
+                <th>Total Bill</th>
+                <th>Product Name</th>
+                <th>Cancel Order</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let orderDetails of orderService.selectedProduct'>
+                <td>{{orderDetails.orderId}}</td>
+                <td>{{orderDetails.productId}}</td>
+                <td>{{orderDetails.email}}</td>
+                <td>{{orderDetails.address}}</td>
+                <td>{{orderDetails.pincode}}</td>
+                <td>{{orderDetails.phoneNumber}}</td>
+                <td>{{orderDetails.productQuantity}}</td>
+                <td>{{orderDetails.totalBill}}</td>
+                <td>{{orderDetails.productName}}</td>
+                <td>
+                    <button type="submit" class="btn btn-primary" (click)='cancelOrder(orderDetails)'>Cancel Order</button>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-large btn-block btn-primary" routerLink="/payment" role="button">Pay Bill</a>
+</div>
